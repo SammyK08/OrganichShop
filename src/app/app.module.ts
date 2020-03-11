@@ -6,9 +6,19 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { RouterModule } from "@angular/router";
 
+import { LoginComponent } from "./login/login.component";
 import { AppComponent } from "./app.component";
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
+import { BsNavbarComponent } from "./bs-navbar/bs-navbar.component";
+import { HomeComponent } from "./home/home.component";
+import { ProductsComponent } from "./products/products.component";
+import { ShoppingCartComponent } from "./shopping-cart/shopping-cart.component";
+import { CheckOutComponent } from "./check-out/check-out.component";
+import { OrderSuccessComponent } from "./order-success/order-success.component";
+import { MyOrderComponent } from "./my-order/my-order.component";
+import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
+import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDrrLz5la16L53cfA_go94JOwiZkYh7fI",
@@ -22,14 +32,36 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, BsNavbarComponent],
+  declarations: [
+    AppComponent,
+    BsNavbarComponent,
+    HomeComponent,
+    ProductsComponent,
+    ShoppingCartComponent,
+    CheckOutComponent,
+    OrderSuccessComponent,
+    MyOrderComponent,
+    AdminProductsComponent,
+    AdminOrdersComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     // 3. Initialize
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    RouterModule.forRoot([
+      { path: "", component: HomeComponent },
+      { path: "products", component: ProductsComponent },
+      { path: "Shopping-cart", component: ShoppingCartComponent },
+      { path: "check-out", component: CheckOutComponent },
+      { path: "order-success", component: OrderSuccessComponent },
+      { path: "login", component: LoginComponent },
+      { path: "admin/products", component: AdminProductsComponent },
+      { path: "admin/orders", component: AdminOrdersComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
