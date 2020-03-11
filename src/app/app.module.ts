@@ -8,6 +8,7 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { AppComponent } from "./app.component";
+import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDrrLz5la16L53cfA_go94JOwiZkYh7fI",
@@ -21,7 +22,7 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BsNavbarComponent],
   imports: [
     BrowserModule,
     // 3. Initialize
