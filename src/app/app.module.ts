@@ -20,6 +20,8 @@ import { OrderSuccessComponent } from "./order-success/order-success.component";
 import { MyOrderComponent } from "./my-order/my-order.component";
 import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
+import { AuthService } from "./auth.service";
+import { AuthGuardService as AuthGuard } from "./auth-guard.service";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDrrLz5la16L53cfA_go94JOwiZkYh7fI",
@@ -58,15 +60,31 @@ const firebaseConfig = {
       { path: "", component: HomeComponent },
       { path: "products", component: ProductsComponent },
       { path: "Shopping-cart", component: ShoppingCartComponent },
-      { path: "check-out", component: CheckOutComponent },
-      { path: "order-success", component: OrderSuccessComponent },
+      {
+        path: "check-out",
+        component: CheckOutComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "order-success",
+        component: OrderSuccessComponent,
+        canActivate: [AuthGuard]
+      },
       { path: "login", component: LoginComponent },
-      { path: "my/orders", component: MyOrderComponent },
-      { path: "admin/products", component: AdminProductsComponent },
+      {
+        path: "my/orders",
+        component: MyOrderComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: "admin/products",
+        component: AdminProductsComponent,
+        canActivate: [AuthGuard]
+      },
       { path: "admin/orders", component: AdminOrdersComponent }
     ])
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
