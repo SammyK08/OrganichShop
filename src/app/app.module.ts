@@ -7,7 +7,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { RouterModule } from "@angular/router";
-//import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { LoginComponent } from "./login/login.component";
 import { AppComponent } from "./app.component";
@@ -53,7 +53,7 @@ const firebaseConfig = {
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    //NgbModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent },
       { path: "products", component: ProductsComponent },
